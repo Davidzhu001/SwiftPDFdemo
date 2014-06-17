@@ -8,17 +8,43 @@
 
 import Foundation
 
-let http404Error = (404, "Not Found")
+//let http404Error = (404, "Not Found")
+//
+//let (statusCode, statusMessage) = http404Error
+//println("The status code is \(statusCode)")
+//println("The message is \(statusMessage)")
+//
+//let (justTheStatusCode, _) = http404Error
+//println("The Status code is \(justTheStatusCode)")
+//
+//println("The status code is \(http404Error.0)")
+//println("The status message is \(http404Error.1)")
 
-let (statusCode, statusMessage) = http404Error
-println("The status code is \(statusCode)")
-println("The message is \(statusMessage)")
+let possibleNumber = "123"
+let convertedNumber = possibleNumber.toInt()
 
-let (justTheStatusCode, _) = http404Error
-println("The Status code is \(justTheStatusCode)")
+//if convertedNumber {
+//    println("\(possibleNumber) has an integer value of \(convertedNumber!)")
+//} else {
+//    println("\(possibleNumber) could not be converted to an integer")
+//}
 
-println("The status code is \(http404Error.0)")
-println("The status message is \(http404Error.1)")
+//if let actualNumber = possibleNumber.toInt() {
+//    println("\(possibleNumber) has an integer value of \(actualNumber)")
+//} else {
+//    println("\(possibleNumber) could not be converted to an integer")
+//}
+//
+//var serverResponseCode: Int? = 404
+//serverResponseCode = nil
+
+
+//let age = -3
+//assert(age >= 0, "A person's age cannot be less than zero")
+
+
+
+
 /*
 @objc protocol HasArea {
     var area: Double { get }
