@@ -412,6 +412,7 @@ func printMathResult(mathFunction: (Int, Int) -> Int, a: Int, b: Int) {
 //    return backwards ? stepBackward : stepForward
 //}
 
+/*
 func chooseStepFunction(backwards: Bool) -> (Int) -> Int {
     func stepForward(input: Int) -> Int { return input + 1}
     func stepBackward(input: Int) -> Int {return input - 1}
@@ -429,6 +430,150 @@ while currentValue != 0 {
     currentValue = moveNearerToZero(currentValue)
 }
 println("zero!")
+*/
+
+
+/*
+// closures
+
+let names = ["Chris", "Alex", "Ewa", "Barry", "Daniella"]
+
+func backwards(s1: String, s2: String) -> Bool {
+    return s1 > s2
+}
+
+
+// closure expression
+/**
+{ (parameters) -> return type in statements}
+*/
+var reversed = sort(names, backwards)
+
+reversed = sort(names, { (s1: String, s2: String) -> Bool in return s1 > s2})
+
+func someFunctionThatTakesAClosure(closure: () -> ()) {
+    
+}
+
+someFunctionThatTakesAClosure({
+    // closure's body
+    })
+
+someFunctionThatTakesAClosure() {
+    // trailing closure's body
+}
+
+reversed = sort(names) { $0 > $1 }
+
+let digitNames = [
+    0: "Zero", 1: "One", 2: "Two", 3: "Three", 4: "Four",
+    5: "Five", 6: "Six", 7: "Seven", 8: "Eight", 9: "Nine"
+]
+
+let numbers = [16, 58, 510]
+let strings = numbers.map {
+    (var number) -> String in
+    var output = ""
+    while number > 0 {
+        output = digitNames[number % 10]! + output
+        number /= 10
+    }
+    return output
+}
+
+println(strings)
+
+func makeIncrementor(forIncrement amount: Int) -> () -> Int {
+    var runningTotal = 0
+    func incrementor() -> Int {
+        runningTotal += amount
+        return runningTotal
+    }
+    return incrementor
+}
+
+let incrementByTen = makeIncrementor(forIncrement: 10)
+//println(incrementByTen())
+
+var c = incrementByTen()
+println(c)
+
+c = incrementByTen()
+println(c)
+
+c = incrementByTen()
+println(c)
+
+*/
+
+
+enum SomeEnumeration {
+    
+}
+
+enum CompassPoint {
+    case North
+    case South
+    case East
+    case West
+}
+
+enum Planet: Int {
+    case Mercury = 1, Venus, Earth, Mars, Jupiter, Uranus,
+    Neptune
+}
+
+var directionToHead = CompassPoint.West
+directionToHead = .East
+
+enum Barcode {
+    case UPCA(Int, Int, Int)
+    case QRCode(String)
+}
+
+var productBarcode = Barcode.UPCA(8, 85909_51226, 3)
+
+productBarcode = .QRCode("ABCDEFGHIJKLMNOP")
+
+
+struct Resolution {
+    var width = 0
+    var height = 0
+}
+
+class VideoMode {
+    var resolution = Resolution()
+    var interlaced = false
+    var frameRate = 0.0
+    var name: String?
+}
+
+let someResolution = Resolution()
+let someVideoMode = VideoMode()
+
+let vga = Resolution(width: 640, height: 480)
+let hd = Resolution(width: 1920, height: 1080)
+var cinema = hd
+cinema.width = 2048
+
+let tenEighty = VideoMode()
+tenEighty.resolution = hd
+tenEighty.interlaced = true
+tenEighty.name = "1080i"
+tenEighty.frameRate = 25.0
+
+let alsoTenEighty = tenEighty
+alsoTenEighty.frameRate = 30.0
+
+
+
+
+
+
+
+
+
+
 
 
 
