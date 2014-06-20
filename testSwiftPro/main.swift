@@ -565,9 +565,17 @@ tenEighty.frameRate = 25.0
 let alsoTenEighty = tenEighty
 alsoTenEighty.frameRate = 30.0
 
+var arrayA = [1,2,3,4,5]
+var arrayB = Array(arrayA)
+arrayB[0] = 8
 
+println("\(arrayA[0]),\(arrayB[0])")
 
+var dictionaryA = ["A": 1, "B": 2]
+var dictionaryB = dictionaryA
+dictionaryB["A"] = 3
 
+println("\(dictionaryA)")
 
 
 
