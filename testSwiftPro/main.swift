@@ -578,11 +578,37 @@ dictionaryB["A"] = 3
 println("\(dictionaryA)")
 
 
+struct FixedLengthRange {
+    var firstValue: Int
+    let length: Int
+}
+var rangeOfThreeItems = FixedLengthRange(firstValue:0, length: 3)
+rangeOfThreeItems.firstValue = 6
 
+//let rangeOfFourItems = FixedLengthRange(firstValue: 0, length: 4)
+//rangeOfFourItems.firstValue = 6
 
+class DataImporter {
+    /*
+        DataImporter is a class to import data from an external file
+        The class is assumed to take a non-trivial amount of time to initialize
+    */
+    var fileName = "data.txt"
+    //  the DataImporter class would provide data importing functionality here
 
+}
 
+class DataManager {
+    @lazy var importer = DataImporter()
+    var data = String[]()
+    // the DataManager class would provide data management functionality here
+}
+//
+let manager = DataManager()
+manager.data += "Some data"
+manager.data += "Some more data"
 
+println(manager.importer.fileName)
 
 
 
