@@ -720,6 +720,9 @@ println(rightChannel.currentLevel)
 
 */
 
+
+
+/*
 // Methods
 class Counter {
     var count: Int = 0
@@ -829,8 +832,120 @@ if player.tracker.advanceToLevel(6) {
     
 }
 
+//subscript(index: Int) -> Int {
+//    get {
+//        return 2
+//    }
+//    set {
+//        
+//    }
+//}
+
+struct TimesTable {
+    let multiplier: Int
+    subscript(index: Int) -> Int {
+        return multiplier * index
+    }
+}
+let threeTimesTable = TimesTable(multiplier: 3)
+println("six times three is \(threeTimesTable[6])")
+
+struct Matrix {
+    let rows: Int, columns: Int
+    var grid: Double[]
+    init(rows: Int, columns: Int) {
+        self.rows = rows
+        self.columns = columns
+        grid = Array(count: rows * columns, repeatedValue: 0.0)
+    }
+    func indexIsValidForRow(row: Int, column: Int) -> Bool {
+        return row >= 0 && row < rows && column >= 0 && column < columns
+    }
+    subscript(row: Int, column: Int) -> Double {
+        get {
+            assert(indexIsValidForRow(row, column: column), "Index out of range")
+            return grid[(row * columns) + column]
+        }
+        set {
+            assert(indexIsValidForRow(row, column: column), "Index out of range")
+            grid[(row * columns) + column] = newValue
+        }
+    }
+}
+
+var matrix = Matrix(rows: 2, columns: 2)
+*/
 
 
+// class  inheritance
+class Vehicle {
+    var numberOfWheels: Int
+    var maxPassengers: Int
+    func description() -> String {
+        return "\(numberOfWheels) wheels; up to \(maxPassengers) passengers"
+    }
+    init() {
+        numberOfWheels = 0
+        maxPassengers = 1
+    }
+}
 
+let someVehicle = Vehicle()
 
+class Bicycle: Vehicle {
+    init() {
+        super.init()
+        numberOfWheels = 2
+    }
+}
+let bicycle = Bicycle()
+println("Bicycle: \(bicycle.description())")
+
+class Tandem: Bicycle {
+    init() {
+        super.init()
+        maxPassengers = 2
+    }
+}
+
+let tandem = Tandem()
+println("Tandem: \(tandem.description())")
+
+class Car: Vehicle {
+    var speed: Double = 0.0
+    init() {
+        super.init()
+        maxPassengers = 5
+        numberOfWheels = 4
+    }
+    override func description() -> String {
+        return super.description() + "; " + "traveling at \(speed) mph"
+    }
+}
+
+let car = Car()
+println("Car: \(car.description())")
+
+class SpeedLimitedCar: Car {
+    override var speed: Double {
+    get {
+        return super.speed
+    }
+    set {
+        super.speed = min(newValue, 40.0)
+    }
+    }
+}
+
+class AutomaticCar: Car {
+    var gear = 1
+    override var speed: Double {
+    didSet {
+        gear = Int(speed / 10.0) + 1
+    }
+    }
+    override func description() -> String {
+        return super.description() + " in gear \(gear)"
+    }
+}
 
