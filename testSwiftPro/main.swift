@@ -1138,8 +1138,142 @@ println("The bank now has \(Bank.coinsInBank) coins")
 */
 
 // Automatic Reference Counting
+/*
+//class Person {
+//    let name: String
+//    init(name: String) {
+//        self.name = name
+//        println("\(name) is being initialized")
+//    }
+//    deinit {
+//        println("\(name) is being deinitialized")
+//    }
+//}
+//
+//var reference1: Person?
+//var reference2: Person?
+//var reference3: Person?
+//reference1 = Person(name: "John Appleseed")
+//reference2 = reference1
+//reference3 = reference1
+//
+//reference1 = nil
+//reference2 = nil
+//reference3 = nil
+
+//class Person {
+//    let name: String
+//    init(name: String) {self.name = name}
+//    var apartment: Apartment?
+//    deinit { println("\(name) is being deinitialized")}
+//    
+//}
+//
+//class Apartment {
+//    let number: Int
+//    init(number: Int) {self.number = number}
+//    weak var tenant: Person?
+//    deinit { println("Apartment #\(number) is being deinitialized")}
+//}
+//
+//var john: Person?
+//var number73: Apartment?
+//
+//john = Person(name: "John Appleseed")
+//number73 = Apartment(number: 73)
+//
+//john!.apartment = number73
+//number73!.tenant = john
+//
+//john = nil
+//number73 = nil
+
+//class Customer {
+//    let name: String
+//    var card: CreditCard?
+//    init(name: String) {
+//        self.name = name
+//    }
+//    deinit { println("\(name) is being deinitialized") }
+//}
+//
+//class CreditCard {
+//    let number: Int
+//    unowned let customer: Customer
+//    init(number: Int, customer: Customer) {
+//        self.number = number
+//        self.customer = customer
+//    }
+//    deinit {
+//        println("Card #\(number) is being deinitialized")
+//    }
+//}
+//
+//var jason: Customer?
+//
+//jason = Customer(name: "John Appleseed")
+//jason!.card = CreditCard(number: 1234_5678_9012_3456, customer: jason!)
+//jason = nil
+//
+//class Country {
+//    let name: String
+//    let capitalCity: City!
+//    init(name: String, capitalName: String) {
+//        self.name = name
+//        self.capitalCity = City(name: capitalName, country: self)
+//    }
+//    deinit {
+//        println("\(name) isdeinit")
+//    }
+//}
+//
+//class City {
+//    let name: String
+//    unowned let country: Country
+//    init(name: String, country: Country) {
+//        self.name = name
+//        self.country = country
+//    }
+//    deinit {
+//        println("\(name) isdeinit")
+//    }
+//}
+//
+//if 1 + 1 == 2 {
+//    var country = Country(name: "Canada", capitalName: "Ottawa")
+//    println("\(country.name)'s capital city is called \(country.capitalCity.name)")
+//}
+//println("deinit should be called before this")
 
 
+class HTMLElement {
+    let name: String
+    let text: String?
+    
+    @lazy var asHTML: () -> String = {
+        [unowned self] in
+        if let text = self.text {
+            return "<\(self.name)>\(text)</\(self.name)>"
+        } else {
+            return "<\(self.name) />"
+        }
+    }
+    
+    init(name: String, text: String? = nil) {
+        self.name = name
+        self.text = text
+    }
+    
+    deinit {
+        println("\(name) is being deinitialized")
+    }
+}
+var paragraph: HTMLElement? = HTMLElement(name: "p", text: "hello ,world")
+println(paragraph!.asHTML())
+paragraph = nil
+*/
+
+// optional chaining
 
 
 
