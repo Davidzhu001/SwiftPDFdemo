@@ -1275,5 +1275,206 @@ paragraph = nil
 
 // optional chaining
 
+/*
+
+//class Person {
+//    var residence: Residence?
+//}
+//
+//class Residence {
+//    var numberOfRooms = 1
+//}
+//
+
+
+class Person {
+    var residence: Residence?
+}
+
+class Residence {
+    var rooms = Room[]()
+    var numberOfRooms: Int {
+        return rooms.count
+    }
+    subscript(i: Int) -> Room {
+        return rooms[i]
+    }
+    func printNumberOfRooms() {
+        println("The number of rooms is \(numberOfRooms)")
+    }
+    var address: Address?
+}
+
+class Room {
+    let name: String
+    init(name: String) {self.name = name}
+}
+
+class Address {
+    var buildingName: String?
+    var buildingNumber: String?
+    var street: String?
+    func buildingIdentifier() -> String? {
+        if buildingName {
+            return buildingName
+        } else if buildingNumber {
+            return buildingNumber
+        } else {
+            return nil
+        }
+    }
+
+}
+let john = Person()
+john.residence = Residence()
+
+if let roomCount = john.residence?.numberOfRooms {
+    println("John's residence has \(roomCount) room(s).")
+} else {
+    println("Unable to retrieve the number of rooms.")
+}
+
+if john.residence?.printNumberOfRooms() {
+    println("It was possible to print the number of rooms")
+} else {
+    println("It was not possible to print the number of rooms")
+}
+
+let johnsHouse = Residence()
+johnsHouse.rooms += Room(name: "Living Room")
+johnsHouse.rooms += Room(name: "Kitchen")
+john.residence = johnsHouse
+
+if let firstRoomName = john.residence?[0].name {
+    println("The first room name is \(firstRoomName)")
+} else {
+    println("Unable to retrieve the first room name.")
+}
+
+let johnsAddress = Address()
+johnsAddress.buildingName = "The Larches"
+johnsAddress.street = "Laurel Street"
+john.residence!.address = johnsAddress
+
+if let johnsStreet = john.residence?.address?.street {
+    println("John's street name is \(johnsStreet).")
+} else {
+    println("Unable to retrieve the address.")
+}
+
+if let buildingIdentifier = john.residence?.address?.buildingIdentifier() {
+    println("John's building identifier is \(buildingIdentifier)")
+}
+
+*/
+
+/*
+// Type Casting
+
+class MediaItem {
+    var name: String
+    init(name: String) {
+        self.name = name
+    }
+}
+
+class Movie: MediaItem {
+    var director: String
+    init(name: String, director: String) {
+        self.director = director
+        super.init(name: name)
+    }
+}
+
+class Song: MediaItem {
+    var artist: String
+    init(name: String, artist: String) {
+        self.artist = artist
+        super.init(name: name)
+    }
+}
+
+//let library = [
+//    Movie(name: "Casablanca", director: "Michael Curtiz"),
+//    Song(name: "Blue Suede Shoes", artist: "Elvis Presley"),
+//    Movie(name: "Citizen Kane", director: "Orson Welles"),
+//    Song(name: "The One And Only", artist: "Chesney Hawkes"),
+//    Song(name: "Never Gonna Give You Up", artist: "Rick Astley")
+//]
+//
+//var movieCount = 0
+//var songCount = 0
+//
+//for item in library {
+//    if item is Movie {
+//        ++movieCount
+//    } else if item is Song {
+//        ++songCount
+//    }
+//}
+//println("Media library contains \(movieCount) movies and \(songCount) songs")
+//
+//for item in library {
+//    if let movie = item as? Movie {
+//        println("Movie: '\(movie.name)', dir. \(movie.director)")
+//    } else if let song = item as? Song {
+//        println("Song: '\(song.name)', by \(song.artist)")
+//    }
+//}
+
+let someObjects: AnyObject[] = [
+    Movie(name: "2001: A Space Odyssey", director: "Stanley Kubrick"),
+    Movie(name: "Moon", director: "Duncan Jones"),
+    Movie(name: "Alien", director: "Ridley Scott")
+]
+
+for object in someObjects {
+    let movie = object as Movie
+    println("Movie: '\(movie.name)', dir. \(movie.director)")
+}
+
+for movie in someObjects as Movie[] {
+    println("Movie: '\(movie.name)', dir. \(movie.director)")
+}
+
+var things = Any[]()
+things.append(0)
+things.append(0.0)
+things.append(42)
+things.append(3.14159)
+things.append("hello")
+things.append((3.0, 5.0))
+things.append(Movie(name: "Ghostbusters", director: "Ivan Reitman"))
+
+for thing in things {
+    switch thing {
+    case 0 as Int:
+        println("zero as an Int")
+    case 0 as Double:
+        println("zero as a Double")
+    case let someInt as Int:
+        println("an integer value of \(someInt)")
+    case let someDouble as Double where someDouble > 0:
+        println("a positive double value of \(someDouble)")
+    case is Double:
+        println("some other double value that I don't want to print")
+    case let someString as String:
+        println("a string value of \"\(someString)\"")
+    case let (x, y) as (Double, Double):
+        println("an (x, y) point at \(x), \(y)")
+    case let movie as Movie:
+        println("a movie called '\(movie.name)', dir. \(movie.director)")
+    default:
+        println("something else")
+    }
+}
+*/
+
+
+// Nested Types
+
+
+
+
 
 
