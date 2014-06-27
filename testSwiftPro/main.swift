@@ -1746,11 +1746,25 @@ if allItemsMatch(stackOfStrings, arrayOfStrings) {
 // Advanced Operators
 
 
+struct Vector2D {
+    var x = 0.0, y = 0.0
+}
 
+@infix func + (left: Vector2D, right: Vector2D) -> Vector2D {
+    return Vector2D(x: left.x + right.x, y: left.y + right.y)
+}
 
+@assignment func += (inout left: Vector2D, right: Vector2D) {
+    left = left + right
+}
 
+operator prefix +++ {}
+@prefix @assignment func +++ (inout vector: Vector2D) -> Vector2D {
+    vector += vector
+    return vector
+}
 
-
-
+var toBeDoubled = Vector2D(x: 1.0, y: 4.0)
+let afterDoubling = +++toBeDoubled
 
 
