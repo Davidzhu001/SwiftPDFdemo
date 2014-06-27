@@ -1599,6 +1599,158 @@ extension Int {
 
 
 
+/*
+// Generic
+
+//func swapTwoInts(inout a: Int, inout b: Int) {
+//    let temporaryA = a
+//    a = b
+//    b = temporaryA
+//}
+//var someInt = 3
+//var anotherInt = 107
+//swapTwoInts(&someInt, &anotherInt)
+//println("someInt is now \(someInt), and anotherInt is now \(anotherInt)")
+
+//func swapTwoValues<T>(inout a: T, inout b: T) {
+//    let temporaryA = a
+//    a = b
+//    b = temporaryA
+//}
+//
+//var someInt = 3
+//var anotherInt = 107
+//swapTwoValues(&someInt, &anotherInt)
+//
+//println("someInt is now \(someInt), and anotherInt is now \(anotherInt)")
+//
+//var someString = "hello"
+//var anotherString = "world"
+//swapTwoValues(&someString, &anotherString)
+//
+//println("someString is now \(someString), and anotherString is now \(anotherString)")
+//
+//struct Stack<T> {
+//    var items = T[]()
+//    mutating func push(item: T) {
+//        items.append(item)
+//    }
+//    mutating func pop() -> T {
+//        return items.removeLast()
+//    }
+//}
+//var stackOfStrings = Stack<String>()
+//stackOfStrings.push("uno")
+//stackOfStrings.push("dos")
+//stackOfStrings.push("tres")
+//stackOfStrings.push("cuatro")
+
+//let fromTheTop = stackOfStrings.pop()
+
+func findIndex<T: Equatable>(array: T[], valueToFind: T) -> Int? {
+    for (index, value) in enumerate(array) {
+        if value == valueToFind {
+            return index
+        }
+    }
+    return nil
+}
+
+let doubleIndex = findIndex([3.14159, 0.1, 0.25], 9.3)
+
+let stringIndex = findIndex(["Mike", "Malcolm", "Andrea"], "Andrea")
+
+protocol Container {
+    typealias ItemType
+    mutating func append(item: ItemType)
+    var count: Int { get }
+    subscript(i: Int) -> ItemType { get }
+}
+
+struct IntStack: Container {
+    var items = Int[]()
+    mutating func push(item: Int) {
+        items.append(item)
+    }
+    mutating func pop() -> Int {
+        return items.removeLast()
+    }
+    
+    // conformance to the Container protocol
+    typealias ItemType = Int
+    mutating func append(item: Int) {
+        self.push(item)
+    }
+    var count: Int {
+    return items.count
+    }
+    subscript(i: Int) -> Int {
+        return items[i]
+    }
+    
+}
+
+struct Stack<T>: Container {
+    // original Stack<T> implementation
+    var items = T[]()
+    mutating func push(item: T) {
+        items.append(item)
+    }
+    mutating func pop() -> T {
+        return items.removeLast()
+    }
+    // conformance to the Container Protocol
+    mutating func append(item: T) {
+        self.push(item)
+    }
+    var count: Int {
+    return items.count
+    }
+    subscript(i: Int) -> T {
+        return items[i]
+    }
+}
+
+extension Array: Container {}
+
+func allItemsMatch<C1: Container, C2: Container where C1.ItemType == C2.ItemType, C1.ItemType: Equatable>
+    (someContainer: C1, anotherContainer: C2) -> Bool {
+        if someContainer.count != anotherContainer.count {
+            return false
+        }
+        
+        for i in 0..someContainer.count {
+            if someContainer[i] != anotherContainer[i] {
+                return false
+            }
+        }
+        
+        return true
+}
+
+var stackOfStrings = Stack<String>()
+stackOfStrings.push("uno")
+stackOfStrings.push("dos")
+stackOfStrings.push("tres")
+
+var arrayOfStrings = ["uno", "dos", "tres"]
+
+if allItemsMatch(stackOfStrings, arrayOfStrings) {
+    println("All items match.")
+} else {
+    println("Not all items match.")
+}
+*/
+
+
+// Advanced Operators
+
+
+
+
+
+
+
 
 
 
